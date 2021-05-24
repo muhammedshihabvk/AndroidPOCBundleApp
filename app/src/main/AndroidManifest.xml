@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.shabsudemy.androidadvancedsection">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidAdvancedSection">
-        <activity android:name=".BrainTrainerActivity"></activity>
+        <activity android:name=".ImageDownloadActivity"></activity>
+        <activity android:name=".WebContentDownloadActivity" />
+        <activity android:name=".BrainTrainerActivity" />
         <activity android:name=".EggTimerActivity" />
         <activity android:name=".TimerActivity" />
         <activity android:name=".TimeTableListView" />
