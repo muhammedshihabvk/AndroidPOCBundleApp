@@ -24,6 +24,7 @@ public class BrainTrainerActivity extends AppCompatActivity {
     int correctAnswerLocationIndex, score = 0, numberOfQuestion = 0, actualAnswer = 0;
     CountDownTimer ct;
     RelativeLayout rL;
+    boolean isGameActive = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +54,7 @@ public class BrainTrainerActivity extends AppCompatActivity {
             public void onFinish() {
 //                timerCounterText.setText(String.valueOf(0)+"s");
                 playAgainButton.setVisibility(View.VISIBLE);
+                isGameActive=false;
                 correctOrWrongText.setText("Your Score: "+String.valueOf(score)+"/"+String.valueOf(numberOfQuestion));
 
             }
@@ -64,6 +66,7 @@ public class BrainTrainerActivity extends AppCompatActivity {
         goButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                isGameActive=true;
                 goButton.setVisibility(View.INVISIBLE);
                 cardView.setVisibility(View.INVISIBLE);
                 rL.setVisibility(View.VISIBLE);
@@ -74,6 +77,7 @@ public class BrainTrainerActivity extends AppCompatActivity {
         playAgainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                isGameActive=true;
                 generateNextQuestion();
                 ct.cancel();
                 ct.start();
@@ -116,15 +120,18 @@ public class BrainTrainerActivity extends AppCompatActivity {
     }
 
     public void chooseAnswer(View view) {
-        Log.i("brainApp", view.getTag().toString());
-        if (Integer.parseInt(view.getTag().toString()) == correctAnswerLocationIndex) {
-            correctOrWrongText.setText("Correct");
-            correctOrWrongText.setVisibility(View.VISIBLE);
-            score++;
-        } else {
-            correctOrWrongText.setText("Wrong");
-            correctOrWrongText.setVisibility(View.VISIBLE);
+        if(isGameActive){
+            if (Integer.parseInt(view.getTag().toString()) == correctAnswerLocationIndex) {
+                correctOrWrongText.setText("Correct");
+                correctOrWrongText.setVisibility(View.VISIBLE);
+                score++;
+            } else {
+                correctOrWrongText.setText("Wrong");
+                correctOrWrongText.setVisibility(View.VISIBLE);
+            }
+            generateNextQuestion();
         }
-        generateNextQuestion();
+
+
     }
 }
