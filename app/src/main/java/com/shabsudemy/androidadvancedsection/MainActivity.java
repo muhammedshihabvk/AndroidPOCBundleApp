@@ -1,10 +1,21 @@
 package com.shabsudemy.androidadvancedsection;
 
+import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -47,6 +58,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.imagetDownloadActivityButton:
                 Intent imagetDownloadActivityButton = new Intent(MainActivity.this, ImageDownloadActivity.class);
                 startActivity(imagetDownloadActivityButton);
+                break;
+
+            case R.id.mapActivity:
+                Intent mapActivity = new Intent(MainActivity.this, MapsActivity.class);
+                startActivity(mapActivity);
+                break;
+
+            case R.id.sharedPreferenceActivity:
+                Intent sharedPreferenceActivity = new Intent(MainActivity.this, SharedPreferencePOCAcivity.class);
+                startActivity(sharedPreferenceActivity);
                 break;
 
             default:
