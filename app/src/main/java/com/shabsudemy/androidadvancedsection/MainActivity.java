@@ -1,14 +1,7 @@
 package com.shabsudemy.androidadvancedsection;
 
-import android.Manifest;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -20,10 +13,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-
-import java.util.zip.Inflater;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -83,6 +72,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(noteAppActivity);
                 break;
 
+            case R.id.databaseActivity:
+                Intent databaseActivity = new Intent(MainActivity.this, DatabaseActivity.class);
+                startActivity(databaseActivity);
+                break;
+            case R.id.webviewActivity:
+                Intent webviewActivity = new Intent(MainActivity.this, WebViewActivity.class);
+                startActivity(webviewActivity);
+
             default:
                 System.out.println("default key pressed");
                 break;
@@ -92,19 +89,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.default_menu,menu);
+        inflater.inflate(R.menu.default_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.menuSearch:
-                Log.i("menu","search menue selected");
+                Log.i("menu", "search menue selected");
                 showDialogue();
                 break;
             case R.id.menuSettings:
-                Log.i("menu","settings menue selected");
+                Log.i("menu", "settings menue selected");
                 break;
             default:
                 break;
@@ -112,7 +109,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return super.onOptionsItemSelected(item);
     }
 
-    public void showDialogue(){
+    public void showDialogue() {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setIcon(android.R.drawable.sym_def_app_icon);
         alertDialogBuilder.setTitle("Are you sure");

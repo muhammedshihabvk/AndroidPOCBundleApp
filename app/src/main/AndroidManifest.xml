@@ -16,7 +16,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidAdvancedSection">
-        <activity android:name=".DatabaseActivity"></activity>
+        <activity android:name=".WebViewActivity"></activity>
+        <activity android:name=".DatabaseActivity" />
         <activity android:name=".NoteAppViewActivity" />
         <activity android:name=".NoteAppAcivity" />
         <activity android:name=".SharedPreferencePOCAcivity" />
